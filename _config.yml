@@ -1,0 +1,14 @@
+# Site settings
+title: The Ascetic Programmer
+email: asceticprogrammer@piccolboni.info
+description: > # this means to ignore newlines until "baseurl:"
+
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://asceticprogrammer.info" # the base hostname & protocol for your site
+twitter_username: ascetciprogrammer
+permalink: /:year/:month/:title.html
+
+excerpt_separator: '<!-- more -->'
+
+plugins:
+  - jekyll-sitemap

@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+<figure>
+  <img src="assets/dungeon1.png">
+</figure>
+
+  <p>
+  <em>Ascetic programming</em> is the writing of computer programs using fewer lines of code or forgoing certain programming language features.
+  </p>
+  <p>
+  Imposing restrictions on programming other than those on resources goes at least as far back as Edsger W. Dijkstra's condemnation of the goto statement. However, among possible restrictions, the one on program length is the most interesting. It has positive associations to computing, from correctness to maintainability.
+  </p>
+  <p>
+  Asceticism originated as a spiritual practice targeting worldly pleasures and promising salvation or enlightenment. This book will focus mainly on code length restrictions and, more generally, description length restrictions, and our rewards will be plenty and varied, but less spiritual.
+  </p>
+  <p>
+  Asceticism in programming comes in two flavors: <em>conciseness</em> and <em>frugality</em>. The former aims at delivering the same functionality with fewer lines of code; the latter's goal is identifying essential features and discarding the rest. They both apply to programming at all scales, from snippets to systems.
+  </p>
+  <p>
+  Beyond programming, unexpected examples of asceticism can be found in statistics, philosophy, the visual arts, music, literature, and more. Outside science and engineering, both the function and the complexity of an artifact are less clear or undefined, so this foray will be, by necessity, more speculative at times.
+  </p>
+  <p>
+  This book doesn't present a grand theory or a practical method, but rather anecdotes and expert opinions, together with the occasional theorem and research paper, some from giants in their respective fields and some from regular professionals. Let the case for asceticism build from the totality of the book rather than a single, decisive argument.
+  </p>
+  <p>
+  Hopefully, you will be convinced that asceticism benefits engineering, science, and the arts and inspired to adopt unnecessary restrictions in your endeavors.
+  </p>
+
+<ul class="retailer-list">
+  <li>Ebook:
+  <ul class="retailer-list">
+    <li><a href="https://www.amazon.com/Ascetic-Programmer-asceticism-benefits-programming-ebook/dp/B0BT3Q7P94">Amazon</a></li>
+    <li><a href="https://www.kobo.com/us/en/ebook/the-ascetic-programmer">Kobo</a></li>
+    <li><a href="https://www.scribd.com/book/623410740/The-Ascetic-Programmer">Scribd</a></li>
+    <li><a href="https://www.barnesandnoble.com/w/the-ascetic-programmer-antonio-piccolboni/1143010154?ean=2940166838643">Barnes & Noble</a></li>
+    <li><a href="https://www.smashwords.com/books/view/1334692">Smashwords</a></li>
+    <li><a href=""></a></li>
+  </ul></li>
+  <li>Paperback
+  <ul class="retailer-list">
+    <li><a href="https://www.amazon.com/Ascetic-Programmer-asceticism-benefits-programming/dp/B0BTMBXRVX">Amazon</a></li>
+  </ul></li>
+</ul>
+<div class="home">
+
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+
+
+
+</div>

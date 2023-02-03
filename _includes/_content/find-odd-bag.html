@@ -1,0 +1,52 @@
+<p>From a job interview challenge, an interesting probability exercise in two parts. One of the themes here is pretty standard fare. You are given a clearly defined random procedure whose outcome is a mixture of two distributions. The problem is, given a certain set of outcomes, find which of the two distributions it is coming from. For instance, imagine you have to assign one of two classes to an item based on repeated noisy measurements and you know the relative size of the two classes (a priori probability of belonging to one of the two). The second part of the challenge is a bit more interesting but also eccentric. It is asking for a best case outcome that would make it easiest (smallest sample) to detect the class of the item with a certain error probability. I am not aware of any practical statistical question where such a best case problem arises, even if we consider the converse, the worst case outcome. But being used to worst case analysis from my CS training, I came up with an optimality proof based on induction and manipulation of binomial coefficients, which confirms the intuition that a very unlikely, extreme outcome is the best one. The main idea is that when lower bounding an expression including binomial coefficients, it is somehow easier to prove a tight lower bound because the binomial coefficients on the two sides of the inequality are very similar in that case and one can simplify a lot and then use simple algebra. It won’t set the world of Mathematics abuzz, but it seemed interesting enough to share.</p>
+<p>Part 1 The following random experiment is described. There are 5 identical bags, 4 of which contain 4 read beads and 96 black ones, the 5th instead has 7 and 93 resp. Select one bag according to the uniform distribution and sample three beads, 1 red and 2 black. What is the probability that the selected bag was the 5th?</p>
+<p>Part 2 Let’s go back to the initial condition, pick one bag and then pick one bead at a time from that bag and stop when the probability of having picked the 5th bag is greater than 1/2. In the best case, how many beads do you need to pick?</p>
+<p>Solution</p>
+<p>Let <span class="math"><em>N</em></span> be the number of beads in each bag, <span class="math"><em>n</em></span> the size of the sample, <span class="math"><em>m</em></span> and <span class="math"><em>m</em>′</span> the number of red beads in each bag with <span class="math"><em>m</em>′ &gt; <em>m</em></span> and <span class="math"><em>k</em></span> the number of read beads in the sample. <span class="math"><em>N</em> = 100</span>, <span class="math"><em>n</em> = 3</span>, <span class="math"><em>m</em>′ = 7</span>, <span class="math"><em>m</em> = 4</span> and <span class="math"><em>k</em> = 1</span> in the first part of the interview challenge, with <span class="math"><em>n</em></span> and <span class="math"><em>k</em></span> becoming variable in the second part. Let <span class="math"><em>X</em></span> be the random variable corresponding to the number of red beads present in a sample. Conditional to the knowledge of the bag from which the extraction occurred, this variable has an hypergeometric distribution. Let M be the random variable corresponding to the number of red beads in the chosen bag.</p>
+<p><br /><span class="math">$$
+ P(X = k|M=m) = \frac{\binom{m}{m}\binom{N-m}{n-k}}{\binom{N}{n}}
+$$</span><br /></p>
+<p>that is <span class="math"><em>X</em></span> follows the hypergeometric distribution with parameters <span class="math"><em>N</em>, <em>n</em>, <em>m</em></span> conditional to having selected a type of bag and</p>
+<p><br /><span class="math"><em>P</em>(<em>M</em> = <em>m</em>) = 4/5</span><br /></p>
+<p><br /><span class="math"><em>P</em>(<em>M</em> = <em>m</em>′) = 1/5</span><br /></p>
+<p>assuming the uniform distribution in bag selection. We are interested in:</p>
+<p><br /><span class="math"><em>P</em>(<em>M</em> = <em>m</em>′|<em>X</em> = <em>k</em>)</span><br /></p>
+<p>that is distribution over bag types conditional to the outcome of a random draw. Using the definition of conditional probability we have</p>
+<p><br /><span class="math">$$
+ P(M = m'|X = k) = \frac{P(M = m' \wedge X = k)}{P(X = k)}
+$$</span><br /></p>
+<p>and applying the same definition again we have</p>
+<p><br /><span class="math">$$
+ P(M = m'|X = k) = \frac{P(X = k | M = m')P(M = m')}{P(X = k)}
+$$</span><br /></p>
+<p>The numerator is the product of a hypergeometric distribution with parameters <span class="math"><em>N</em>, <em>n</em>, <em>m</em>′</span> and a constant. At the numerator, we apply the law of alternatives to get</p>
+<p><br /><span class="math"><em>P</em>(<em>X</em> = <em>k</em>) = <em>P</em>(<em>X</em> = <em>k</em>|<em>M</em> = <em>m</em>′)<em>P</em>(<em>M</em> = <em>m</em>′) + <em>P</em>(<em>X</em> = <em>k</em>|<em>M</em> = <em>m</em>)<em>P</em>(<em>M</em> = <em>m</em>)</span><br /></p>
+<p>Combining the last two we have</p>
+<p><br /><span class="math"><em>P</em>(<em>M</em> = <em>m</em>′|<em>X</em> = <em>k</em>) = </span><br /> <br /><span class="math">$$
+ \frac{P(X = k | M = m')P(M = m')}{P(X = k| M= m') P(M = m')+P(X = k| M= m) P(M = m)} =$$</span><br /> <br /><span class="math">$$
+ \frac{1}{1+\frac{P(X = k| M= m) P(M = m)}{P(X = k| M= m') P(M = m')}} =$$</span><br /> <br /><span class="math">$$
+ \frac{1} {1+ \frac{\frac{\binom{m}{m}\binom{N-m}{n-k}}{\binom{N}{n}} \frac{4}{5}} {\frac{\binom{m}{m}\binom{N-m'}{n-k}}{\binom{N}{n}} \frac{1}{5} }}
+$$</span><br /></p>
+<p>which can be simplified to</p>
+<p><br /><span class="math">$$\frac{1}{1+\frac{4\binom{m}{k}\binom{N-m}{n-k}}{\binom{m'}{k}\binom{N-m'}{n-k}}}\qquad(1)
+$$</span><br /></p>
+<p>We need only to substitute in the values to obtain the desired probability.</p>
+<p>Now to the second part of the challenge, whereby one needs to find the smallest <span class="math"><em>n</em></span> such that for some <span class="math"><em>k</em></span> the above expression is greater than 1/2 (with the other parameters as before and within the allowed range for <span class="math"><em>n</em></span> and <span class="math"><em>k</em></span>). We want to show that the solution is <span class="math"><em>n</em> = <em>k</em> = 3</span> and we will do it in two parts. First we will show that Eq. (1) is maximized, for any given <span class="math"><em>n</em></span>, when <span class="math"><em>k</em> = <em>n</em></span>, which supports the intuition that the red bead rich bag will be more promptly identified when all the sampled beads are red. Then we will show that the smallest <span class="math"><em>n</em></span> such that Eq. (1) with <span class="math"><em>k</em> = <em>n</em></span> is greater than 1/2 is 3. To establish the first part we will show that</p>
+<p><br /><span class="math">$$\frac{1}{1+\frac{4\binom{m}{k'}\binom{N-m}{n-k'}}{\binom{m'}{k'}\binom{N-m'}{n-k'}}} \ge
+ \frac{1}{1+\frac{4\binom{m}{k}\binom{N-m}{n-k}}{\binom{m'}{k}\binom{N-m'}{n-k}}} \qquad (2)
+$$</span><br /> if and only if <span class="math"><em>k</em>′ ≥ <em>k</em></span>. We will prove the special case <span class="math"><em>k</em>′ = <em>k</em> + 1</span> from which the general case follows by induction.</p>
+<p>By simple algebraic manipulation and substituting <span class="math"><em>k</em>′</span> Eq. (2) is equivalent to:</p>
+<p><br /><span class="math">$$\frac{\binom{m}{k+1}\binom{N-m}{n-k-1}}{\binom{m'}{k+1}\binom{N-m'}{n-k-1}} &lt; \frac{\binom{m}{k}\binom{N-m}{n-k}}{\binom{m'}{k}\binom{N-m'}{n-k}}$$</span><br /></p>
+<p>Expanding the binomial coefficients we get:</p>
+<p><br /><span class="math">$$\frac{\frac{m!}{(k+1)!(m-k-1)!}\frac{(N-m)!}{(n-k-1)!(N-m-n+k+1)!}} {\frac{m'!}{(k+1)!(m'-k-1)!}\frac{(N-m')!}{(n-k-1)!(N-m'-n+k+1)!}} &lt; \frac{\frac{m!}{k!(m-k)!}\frac{(N-m)!}{(n-k)!(N-m-n+k)!}} {\frac{m'!}{k!(m'-k)!}\frac{(N-m')!}{(n-k)!(N-m'-n+k)!}}$$</span><br /></p>
+<p>By simple algebraic manipulations we have:</p>
+<p><br /><span class="math">$$\frac{N-m'-n+k+1}{N-m-n+k+1} &lt; \frac{m'-k}{m-k}$$</span><br /></p>
+<p>Since <span class="math"><em>m</em>′ &gt; <em>m</em></span> we can upper bound the left side with 1 and lower bound the left side with 1, which completes this part of the proof.</p>
+<p>Now we have established Eq. (2), we know that Eq. (1) is maximized, for every <span class="math"><em>n</em></span>, by setting <span class="math"><em>k</em> = <em>n</em></span>. With this substitution our goal becomes:</p>
+<p><br /><span class="math">$$\frac{1}{1+\frac{4\binom{m}{n}}{\binom{m'}{n}}} \ge \frac{1}{2}
+$$</span><br /></p>
+<p>which is equivalent to</p>
+<p><br /><span class="math">$$
+ 4\binom{m}{n}\le \binom{m'}{n}
+$$</span><br /></p>
+<p>Substituting in the values of <span class="math"><em>m</em></span> and <span class="math"><em>m</em>′</span> and trying <span class="math"><em>n</em> ∈ {1, 2, 3}</span> we find that <span class="math"><em>n</em> = 3</span> is the solution.</p>
