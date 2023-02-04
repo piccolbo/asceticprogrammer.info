@@ -28,6 +28,11 @@
     color: $text-color !important;
 }
 
+.current {
+  color: $background-color !important;
+  background: $text-color;
+}
+
 .site-nav {
     line-height: 56px;
     text-align: center;
