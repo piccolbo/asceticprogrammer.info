@@ -12,7 +12,7 @@
     position: fixed;
     z-index: 9999;
     width:100%;
-    background-color:$background-color;
+    background-color: $background-color;
 }
 
 .div-site-title {
@@ -25,11 +25,7 @@
     margin-bottom: 0;
     text-transform: uppercase;
     text-align: center;
-
-    &,
-    &:visited {
-        color: $grey-color-dark;
-    }
+    color: $text-color !important;
 }
 
 .site-nav {
@@ -141,6 +137,11 @@
 .footer-col-3 {
     width: -webkit-calc(45% - (#{$spacing-unit} / 2));
     width:         calc(45% - (#{$spacing-unit} / 2));
+}
+
+.footnotes {
+  font-size: 13px;
+  margin-top: 99px;
 }
 
 @include media-query($on-laptop) {

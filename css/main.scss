@@ -15,11 +15,12 @@ $spacing-unit:     30px;
 
 $text-color:       #FFB000;
 $background-color: #000000;
-$brand-color:      #FFB000;
 
 $grey-color:       #FFB000;
-$grey-color-light: lighten($grey-color, 10%);
-$grey-color-dark:  darken($grey-color, 10%);
+$grey-color-light: lighten($grey-color, 0%);
+$grey-color-dark:  darken($grey-color, 0%);
+
+$brand-color:      $grey-color-light;
 
 // Width of the content area
 $content-width:    800px;
@@ -41,8 +42,6 @@ $on-laptop:        800px;
         @content;
     }
 }
-
-
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
