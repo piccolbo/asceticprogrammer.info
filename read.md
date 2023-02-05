@@ -15,5 +15,5 @@ There are many ways to read this book:
       <li>More coming</li>
     </ul>
   - A paperback version is available from <a href="https://www.amazon.com/Ascetic-Programmer-asceticism-benefits-programming/dp/B0BTMBXRVX">Amazon</a>.
-  - Library access is coming.
+  - Library access through your local library and [Overdrive](https://overdrive.com).
   - There is a free and annotatable online <a href="book">version</a>.
