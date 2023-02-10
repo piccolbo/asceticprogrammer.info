@@ -5,7 +5,7 @@ title: Read
 
 There are many ways to read this book:
 
-  - You can buy the ebook from the following retailers (US only):
+  - You can buy the ebook from the following retailers:
     - [Amazon](https://www.amazon.com/Ascetic-Programmer-asceticism-benefits-programming-ebook/dp/B0BT3Q7P94)
     - [Apple](https://books.apple.com/us/book/id6445622440)
     - [Kobo](https://www.kobo.com/us/en/ebook/the-ascetic-programmer)
